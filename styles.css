@@ -5,7 +5,6 @@ body {
   background-color: #161616;
   color: #333;
   overflow-x: hidden;
-  
 }
 
 nav ul {
@@ -18,12 +17,10 @@ nav ul {
   justify-content: center;
   align-items: center;
   position: relative;
-  overflow: hidden; /* Prevent overflow in the nav */
 }
 
-
 nav ul li {
-  display: inline;
+  display: inline-block;
   margin-right: 20px;
 }
 
@@ -37,14 +34,12 @@ nav ul li a {
 nav ul .logo {
   position: absolute;
   left: 20px;
-  margin-right: 0;
 }
 
 nav ul .logo img {
-  height: 65px; /* Adjust logo size here */
+  height: 65px;
   vertical-align: middle;
 }
-
 
 .hero-section {
   background-color: #161616;
@@ -56,12 +51,11 @@ nav ul .logo img {
   text-align: center;
   flex-direction: column;
   font-size: 2rem;
-  width: 100%;
 }
 
 .typing-text {
   font-weight: bold;
-  border-right: 2px solid #a6ff2b; 
+  border-right: 2px solid #a6ff2b;
   color: #fff;
   white-space: nowrap;
   overflow: hidden;
@@ -72,13 +66,12 @@ nav ul .logo img {
 
 @keyframes blink-caret {
   from, to {
-      border-color: transparent;
+    border-color: transparent;
   }
   50% {
-      border-color: #fff;
+    border-color: #fff;
   }
 }
-
 
 section {
   margin: 40px 0;
@@ -87,6 +80,7 @@ section {
 
 section .content {
   display: flex;
+  flex-wrap: wrap; /* Allow wrapping on smaller screens */
   justify-content: space-between;
   align-items: center;
 }
@@ -98,24 +92,20 @@ section .text {
 section .about-image {
   width: 50%;
   display: flex;
-  justify-content: center; /* Centers the image horizontally */
-  align-items: flex-start; /* Moves the image upwards */
+  justify-content: center;
+  align-items: flex-start;
 }
 
 section .about-image img {
-  width: 75%; /* Adjust the image size as needed */
+  width: 100%;
+  max-width: 400px;
   object-fit: cover;
   border-radius: 20px;
 }
-section .about-image img:hover {
- color: #a6ff2b;
-}
+
 section p {
   color: rgb(226, 241, 255);
   font-weight: 800;
-}
-section p:hover{
-  color: #a6ff2b;
 }
 
 h2 {
@@ -124,17 +114,12 @@ h2 {
   color: #a6ff2b;
   background-color: #161616;
 }
-h2:hover{
-  color: #fff;
-}
-
 
 footer {
   text-align: center;
   padding: 10px;
   background-color: #333;
   color: #fff;
-  position: relative;
   width: 100%;
 }
 
@@ -150,12 +135,12 @@ footer {
 }
 
 .social-icons a:hover {
-  color: #a6ff2b; /* Accent color on hover */
+  color: #a6ff2b;
 }
 
-#projects h2{
-margin-left: 45%;
-
+/* Projects */
+#projects h2 {
+  text-align: center;
 }
 
 .project-grid {
@@ -163,40 +148,25 @@ margin-left: 45%;
   grid-template-columns: repeat(3, 1fr);
   gap: 20px;
 }
-
-/* General project styling */
 .project {
-  position: relative; /* For absolute positioning of the overlay and link */
+  position: relative;
   background-color: #333;
   padding: 20px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   border-radius: 10px;
-  overflow: hidden; /* Ensure that overlay stays within the bounds of the project card */
+  overflow: hidden;
   transition: transform 0.3s ease;
 }
 
+.project img {
+  max-width: 100%;
+  height: auto;
+}
+
 .project:hover {
-  transform: scale(1); /* Slight zoom on hover */
+  transform: scale(1.05);
 }
 
-/* Overlay styling */
-.project::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: -100%; /* Start off to the left */
-  width: 100%;
-  height: 100%;
-  background-color: rgba(31, 31, 31, 0.6); /* Dark overlay */
-  transition: left 0.5s ease; /* Smooth transition */
-  z-index: 1; /* Overlay should be above the image but below the content */
-}
-
-.project:hover::before {
-  left: 0; /* Move overlay to the center on hover */
-}
-
-/* Link icon styling */
 .project-link {
   position: absolute;
   top: 50%;
@@ -205,21 +175,93 @@ margin-left: 45%;
   color: #fff;
   font-size: 5rem;
   text-decoration: none;
-  opacity: 0; /* Initially hidden */
+  opacity: 0;
   transition: opacity 0.3s ease;
-  z-index: 2; /* Above the overlay */
 }
 
-/* Show the link icon on hover */
 .project:hover .project-link {
   opacity: 1;
+  color: #a6ff2b;
 }
 
-/* Optional hover effect for the link icon */
-.project-link:hover {
-  color: #a6ff2b; /* Change icon color on hover */
-}
-.project img {
-  max-width: 100%;
+/* Media Queries */
+@media (max-width: 768px) {
+  .hero-section h1 {
+      font-size: 2rem;
+  }
+
+  .hero-section p {
+      font-size: 1.2rem;
+  }
+  
+  /* Adjust text size in sections */
+  section .text {
+      width: 100%; /* Make the text take up the full width */
+  }
+
+  section .about-image {
+      width: 100%;
+      margin-top: 20px; /* Add margin for spacing */
+  }
+
+  section .about-image img {
+      width: 90%; /* Shrink the image size on smaller screens */
+  }
 }
 
+/* For smaller screens (e.g., mobile), make the grid layout responsive */
+@media (max-width: 768px) {
+  .project-grid {
+      grid-template-columns: 1fr; /* Stack projects vertically */
+  }
+  
+  /* Optional: You can also reduce the project card padding */
+  .project {
+      padding: 10px;
+  }
+}
+
+  footer {
+    font-size: 14px;
+  }
+
+
+@media (max-width: 480px) {
+  nav ul {
+    padding: 10px;
+  }
+
+  .hero-section {
+    font-size: 1.2rem;
+  }
+
+  section .content {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .typing-text {
+    font-size: 1.5rem;
+  }
+
+  footer {
+    padding: 20px;
+  }
+}
+html {
+  scroll-behavior: smooth;
+}
+/* Additional mobile adjustments for smaller than 576px (very small screens) */
+@media (max-width: 576px) {
+  nav ul li a {
+      font-size: 16px;
+  }
+
+  h2 {
+      font-size: 28px;
+  }
+
+  .project img {
+      width: 100%; /* Ensure project images fit properly */
+  }
+}
