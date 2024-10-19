@@ -6,6 +6,7 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         });
     });
 });
+
 const typingText = document.querySelector('.typing-text');
 const words = ["Web Developer", "Web Designer", "Front-End Developer" , "Back-End Developer"];
 let wordIndex = 0;
