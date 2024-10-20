@@ -244,15 +244,25 @@ footer {
   }
 }
 
+
+/* Media Queries */
 @media (max-width: 480px) {
   nav ul {
-    flex-direction: column;
+    flex-direction: column; /* Stack items vertically */
     padding: 10px;
   }
 
+  /* Ensure the logo doesn't overlap the menu */
   nav ul .logo {
-    margin-bottom: 10px;
+    order: -1; /* Move the logo to the top */
+    margin-bottom: 15px;
   }
+
+  nav ul li {
+    margin-right: 0; /* Remove right margin on small screens */
+    margin-bottom: 10px; /* Add space between menu items */
+  }
+}
 
   .hero-section {
     font-size: 1.2rem;
@@ -272,7 +282,7 @@ footer {
   footer {
     padding: 20px;
   }
-}
+
 
 @media (max-width: 576px) {
   nav ul li a {
