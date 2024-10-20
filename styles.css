@@ -87,34 +87,36 @@ nav ul .logo img {
 section {
   margin: 40px 0;
   padding: 20px;
-  overflow-x: hidden; /* Prevent any possible section overflow */
-  box-sizing: border-box; /* Ensure padding does not cause overflow */
-  max-width: 100%; /* Prevent overflow on smaller screens */
+  box-sizing: border-box;
+  max-width: 1200px; /* Constrain max width for better alignment */
+  width: 100%;
+  margin: auto; /* Center the section horizontally */
 }
 
 section .content {
   display: flex;
-  flex-wrap: wrap; /* Allow wrapping on smaller screens */
-  justify-content: space-between;
+  justify-content: space-between; /* Space out the text and image */
   align-items: center;
-  width: 100%; /* Ensure the content doesn't exceed the section width */
-  overflow-x: hidden; /* Ensure no overflow */
+  width: 100%;
+  gap: 20px; /* Add spacing between text and image */
+  flex-wrap: nowrap; /* Prevent wrapping unless absolutely needed */
 }
 
 section .text {
-  width: 50%;
-  box-sizing: border-box; /* Ensure padding fits within the width */
+  flex: 1; /* Allow text to take up remaining space */
+  padding-right: 20px; /* Add space between text and image */
+  box-sizing: border-box;
 }
 
 section .about-image {
-  width: 50%;
+  flex: 1; /* Allow image to take up remaining space */
   display: flex;
   justify-content: center;
   align-items: flex-start;
 }
 
 section .about-image img {
-  width: 100%;
+  width: 100%; /* Make sure the image is responsive */
   max-width: 400px;
   object-fit: cover;
   border-radius: 20px;
@@ -130,8 +132,26 @@ h2 {
   margin-bottom: 20px;
   color: #a6ff2b;
   background-color: #161616;
-  max-width: 100%; /* Prevent overflow from headings */
+  max-width: 100%;
 }
+
+/* Responsive Design for smaller screens */
+@media (max-width: 768px) {
+  section .content {
+    flex-direction: column; /* Stack text and image vertically */
+    text-align: center; /* Center the text */
+  }
+
+  section .text {
+    padding-right: 0;
+  }
+
+  section .about-image {
+    margin-top: 20px;
+  }
+}
+
+
 
 #projects h2 {
   text-align: center;
