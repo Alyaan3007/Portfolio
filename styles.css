@@ -153,6 +153,7 @@ h2 {
 
 
 
+/* Project section styling */
 #projects h2 {
   text-align: center;
 }
@@ -161,7 +162,7 @@ h2 {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 20px;
-  max-width: 100%; /* Prevent overflow in the grid */
+  max-width: 100%;
 }
 
 .project {
@@ -179,10 +180,29 @@ h2 {
   height: auto;
 }
 
+/* Remove the scale transform effect on hover */
 .project:hover {
-  transform: scale(1.05);
+  transform: none;
 }
 
+/* Overlay effect */
+.project::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%; /* Start from the left (off-screen) */
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent black */
+  transition: left 0.5s ease; /* Smooth transition */
+  z-index: 1;
+}
+
+.project:hover::before {
+  left: 0; /* Slide in from left to right */
+}
+
+/* Project link icon styling */
 .project-link {
   position: absolute;
   top: 50%;
@@ -193,12 +213,15 @@ h2 {
   text-decoration: none;
   opacity: 0;
   transition: opacity 0.3s ease;
+  z-index: 2; /* Ensure it's above the overlay */
 }
 
+/* Show link icon on hover */
 .project:hover .project-link {
   opacity: 1;
-  color: #a6ff2b;
+  color: #a6ff2b; /* Custom color for the link */
 }
+
 
 footer {
   text-align: center;
